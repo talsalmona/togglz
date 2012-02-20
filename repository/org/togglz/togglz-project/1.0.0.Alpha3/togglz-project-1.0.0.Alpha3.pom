@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+<!-- 
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>7</version>
+  </parent>
+ -->
+
+  <groupId>org.togglz</groupId>
+  <artifactId>togglz-project</artifactId>
+  <version>1.0.0.Alpha3</version>
+  <packaging>pom</packaging>
+
+  <name>Togglz</name>
+  <description>Implementation of the feature toggles pattern for Java</description>
+  <url>http://www.togglz.org/</url>
+
+  <licenses>
+    <license>
+      <name>Apache License 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git@github.com:chkal/togglz.git</connection>
+    <developerConnection>scm:git:git@github.com:chkal/togglz.git</developerConnection>
+    <url>https://github.com/chkal/togglz</url>
+  </scm>
+
+  <issueManagement>
+    <system>github</system>
+    <url>http://github.com/chkal/togglz/issues</url>
+  </issueManagement>
+
+  <distributionManagement>
+    <repository>
+      <id>gh-pages</id>
+      <url>file:///${env.REPOSITORY}/</url>
+    </repository>
+  </distributionManagement>
+
+  <build>
+    <plugins>
+
+      <!-- Java6 -->
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+
+      <!-- Release -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.2.1</version>
+        <configuration>
+          <pushChanges>false</pushChanges>
+          <localCheckout>true</localCheckout>
+          <autoVersionSubmodules>true</autoVersionSubmodules>
+          <tagNameFormat>@{project.version}</tagNameFormat>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <profiles>
+
+    <profile>
+      <id>default</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <modules>
+        <module>core</module>
+        <module>servlet</module>
+        <module>console</module>
+        <module>cdi</module>
+        <module>spring</module>
+        <module>jsf</module>
+        <module>seam-security</module>
+        <module>spring-security</module>
+        <module>testsuite</module>
+      </modules>
+    </profile>
+
+    <profile>
+      <id>deploy</id>
+      <modules>
+        <module>core</module>
+        <module>servlet</module>
+        <module>console</module>
+        <module>cdi</module>
+        <module>spring</module>
+        <module>jsf</module>
+        <module>seam-security</module>
+        <module>spring-security</module>
+      </modules>
+    </profile>
+
+  </profiles>
+
+  <developers>
+    <developer>
+      <id>chkal</id>
+      <email>christian@kaltepoth.de</email>
+      <name>Christian Kaltepoth</name>
+      <timezone>CET</timezone>
+    </developer>
+  </developers>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.togglz</groupId>
+        <artifactId>togglz-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.togglz</groupId>
+        <artifactId>togglz-servlet</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>1.6.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.10</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>javax.enterprise</groupId>
+        <artifactId>cdi-api</artifactId>
+        <version>1.0-SP4</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.seam.security</groupId>
+        <artifactId>seam-security</artifactId>
+        <version>3.1.0.Final</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+</project>
