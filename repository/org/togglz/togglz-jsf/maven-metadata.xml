@@ -3,11 +3,12 @@
   <groupId>org.togglz</groupId>
   <artifactId>togglz-jsf</artifactId>
   <versioning>
-    <release>1.0.0.Alpha4</release>
+    <release>1.0.0.Alpha5</release>
     <versions>
       <version>1.0.0.Alpha3</version>
       <version>1.0.0.Alpha4</version>
+      <version>1.0.0.Alpha5</version>
     </versions>
-    <lastUpdated>20120419173242</lastUpdated>
+    <lastUpdated>20120518130047</lastUpdated>
   </versioning>
 </metadata>
